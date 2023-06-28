@@ -1,0 +1,6 @@
+<div>
+    <button id="new-post-button">Create New Post</button>
+    {{#each userPosts}}
+        {{> blog-block editable=true}}
+    {{/each}}
+</div>
