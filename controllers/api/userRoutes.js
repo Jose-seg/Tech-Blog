@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const bcrypt = require('bcrypt');
 
 // signup route
 router.post('/signup', async (req, res) => {
@@ -18,12 +19,21 @@ router.post('/signup', async (req, res) => {
 // login route
 router.post('/login', async (req, res) => {
     try {
-        const userData = await User.findOne({ where: { email: req.body.email } });
+
+        console.log(req.body) 
+
+        const userData = await User.findOne({ where: { email: req.body.email} });
+
+        console.log(userData)
+
         if (!userData) {
             res.status(400).json({ message: "incorrect email or password" });
             return;
         }
-        const validPassword = await userData.checkPassword(req.body.password);
+        const validPassword = bcrypt.compareSync(req.body.password, userData.password);
+
+        console.log(validPassword)
+        
         if (!validPassword) {
             res.status(400).json({ message: "incorrect email or password" })
             return;

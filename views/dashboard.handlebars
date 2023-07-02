@@ -1,5 +1,10 @@
 <div>
-    <button id="new-post-button">Create New Post</button>
+      <h1>Dashboard</h1>
+    <form class="new-post-form">
+        <input type="text" id="post-title" placeholder="Post Title">
+        <textarea id="post-content" placeholder="Content"></textarea>
+        <button type="submit">Create Post</button>
+    </form>
     {{#each userPosts}}
         {{> blog-block editable=true}}
     {{/each}}

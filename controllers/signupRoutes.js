@@ -1,4 +1,4 @@
-const express = require('express');
+
 const router = require('express').Router();
 const { User } = require('../models'); // Assuming you have a User model
 
@@ -10,14 +10,20 @@ router.get('/signup', (req, res) => {
 // Handle the signup form submission
 router.post('/signup', async (req, res) => {
   try {
-    // Extract the necessary data from the request body
-    const { username, password } = req.body;
+    // Retrieve the necessary data from the request body
+    const { email, password } = req.body;
 
     // Create a new user in the database
-    const newUser = await User.create({ username, password });
+    const newUser = await User.create({ email, password });
+    
+    // Automatically log the user in after signup
+    req.session.save(() => {
+      req.session.user_id = newUser.id;
+      req.session.logged_in = true;
+    }); 
 
     // Redirect to the dashboard or any other desired page
-    res.redirect('/');
+    res.status(200).json(newUser);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: 'Failed to sign up' });
