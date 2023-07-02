@@ -11,10 +11,10 @@ router.get('/signup', (req, res) => {
 router.post('/signup', async (req, res) => {
   try {
     // Retrieve the necessary data from the request body
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     // Create a new user in the database
-    const newUser = await User.create({ email, password });
+    const newUser = await User.create({ username, password });
     
     // Automatically log the user in after signup
     req.session.save(() => {

@@ -2,7 +2,8 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
+    console.log(req.session)
     try {
         const postData = await Post.findAll({
             where: { 
@@ -11,6 +12,7 @@ router.get('/', async (req, res) => {
         });
         res.json(postData);
     } catch (err) {
+        console.log(err);
         res.status(500).json(err);
     }
 });
