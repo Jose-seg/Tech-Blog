@@ -15,3 +15,9 @@ This app purpose is to mimic the way posting and the interacting with post in th
 - express-session: "^1.17.3,
 - mysql2: ^3.4.2,
 - sequelize: "^6.32.1
+
+## Screenshots 
+![image](https://github.com/Jose-seg/Backend-E-commerce/assets/122575280/f36e4192-42b3-40af-bed9-e3097b846b36)
+
+## Links
+https://github.com/Jose-seg/Tech-Blog
