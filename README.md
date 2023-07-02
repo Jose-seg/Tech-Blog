@@ -21,3 +21,5 @@ This app purpose is to mimic the way posting and the interacting with post in th
 
 ## Links
 https://github.com/Jose-seg/Tech-Blog
+https://techh-blog-d9a80c6c2346.herokuapp.com/
+
